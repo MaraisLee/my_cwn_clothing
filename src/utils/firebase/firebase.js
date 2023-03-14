@@ -7,6 +7,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  onAuthStateChanged,
 } from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 
@@ -77,3 +78,7 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 };
 
 export const signOutUSer = async () => await signOut(auth);
+
+//user가 있는지 없는지 일일이 state쓸필요없이 fb에서 주는 이기능을 한번만 쓰면 user 유무를 확인할 수 0 (context에서)
+export const onAuthStateChangedListener = (callback) =>
+  onAuthStateChanged(auth, callback);
