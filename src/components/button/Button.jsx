@@ -1,10 +1,10 @@
-import './button.scss';
+import "./button.scss";
 const BUTTON_TYPE_CLASSES = {
-  goolge: 'google-sign-in',
-  inverted: 'inveerted',
+  google: "google-sign-in",
+  inverted: "inverted",
 };
 
-const butoon = ({ children, buttonType, ...otherProps }) => {
+const Button = ({ children, buttonType, ...otherProps }) => {
   return (
     <button
       className={`button-container ${BUTTON_TYPE_CLASSES[buttonType]}`}
@@ -15,4 +15,4 @@ const butoon = ({ children, buttonType, ...otherProps }) => {
   );
 };
 
-export default butoon;
+export default Button;
