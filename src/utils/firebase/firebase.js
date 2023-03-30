@@ -81,10 +81,10 @@ export const createUserDocumentFromAuth = async (
 ) => {
   if (!userAuth) return;
   const userDocRef = doc(db, "users", userAuth.uid);
-  console.log(userAuth);
+  // console.log(userAuth);
   // firestore의 저장위치
   const userSnapshot = await getDoc(userDocRef);
-  console.log(userSnapshot);
+  // console.log(userSnapshot);
 
   // user data 있으면(=true)
   if (!userSnapshot.exists()) {

@@ -33,7 +33,7 @@ const SignInForm = () => {
         email,
         password
       );
-      console.log(user);
+      // console.log(user);
 
       resetFormFields();
     } catch (error) {
