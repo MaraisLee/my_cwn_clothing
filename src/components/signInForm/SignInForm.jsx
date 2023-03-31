@@ -1,19 +1,21 @@
-import { useState } from "react";
-import FormInput from "../formInput/FormInput";
-import Button, { BUTTON_TYPE_CLASSES } from "../button/Button";
+import { useEffect, useState } from 'react';
+import FormInput from '../formInput/FormInput';
+import Button, { BUTTON_TYPE_CLASSES } from '../button/Button';
 
 import {
   signInWithGoglePopup,
   signInAuthUserWithEmailAndPassword,
-} from "../../utils/firebase/firebase";
-import { ButtonsContainer, SignUpContainer } from "./signIn-form..styles";
+} from '../../utils/firebase/firebase';
+import { ButtonsContainer, SignUpContainer } from './signIn-form..styles';
+import { useNavigate } from 'react-router-dom';
 
 const defaultFormFields = {
-  email: "",
-  password: "",
+  email: '',
+  password: '',
 };
 
 const SignInForm = () => {
+  const navigate = useNavigate();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
@@ -34,15 +36,15 @@ const SignInForm = () => {
         password
       );
       console.log(user);
-
+      navigate('/');
       resetFormFields();
     } catch (error) {
       switch (error.code) {
-        case "auth/wrong-password":
-          alert("incorrect password for email");
+        case 'auth/wrong-password':
+          alert('incorrect password for email');
           break;
-        case "auth/user-not-found":
-          alert("no user associated with this email");
+        case 'auth/user-not-found':
+          alert('no user associated with this email');
           break;
         default:
           console.log(error);
